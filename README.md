@@ -1,7 +1,10 @@
 # kottans-fe-compendium
-A personal commonplace for notes and link about Kottans Frontend course (2021).
 
+Персональый сборник конспектов по лекциям курса Kottans Frontend 2021.
 
+## Официальная таблица с лекциями, слайдами и видеозаписями
+
+[Тык](https://github.com/kottans/frontend/blob/master/SCHEDULE.md)
 
 ## Содержание
 
@@ -9,4 +12,4 @@ A personal commonplace for notes and link about Kottans Frontend course (2021).
 | ------------------------------------------- | ------------------- | ------------------- |
 | [Лекция 0](./lections/lection0/lection0.md) | Вступление          | Менторы Kottans     |
 | [Лекция 1](./lections/lection1/lection1.md) | HTML / CSS / JS DOM | Александр Островной |
-
+| [Лекция 2](./lections/lection2/lection2.md) | HTML / CSS / JS DOM | Александр Островной |
