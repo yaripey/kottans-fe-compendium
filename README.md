@@ -8,8 +8,12 @@
 
 ## Содержание
 
-| Номер лекции                                | Модуль              | Лектор              |
-| ------------------------------------------- | ------------------- | ------------------- |
-| [Лекция 0](./lections/lection0/lection0.md) | Вступление          | Менторы Kottans     |
-| [Лекция 1](./lections/lection1/lection1.md) | HTML / CSS / JS DOM | Александр Островной |
-| [Лекция 2](./lections/lection2/lection2.md) | HTML / CSS / JS DOM | Александр Островной |
+### HTML / CSS / JS DOM
+
+| Номер лекции                                | Лектор               |
+| ------------------------------------------- | -------------------- |
+| [Лекция 0](./lections/lection0/lection0.md) | Менторы Kottans      |
+| [Лекция 1](./lections/lection1/lection1.md) | Александр Островной  |
+| [Лекция 2](./lections/lection2/lection2.md) | Александр Островной  |
+| [Лекция 3](./lections/lection2/lection3.md) | Христина Ландвитович |
+| [Лекция 4](./lections/lection2/lection4.md) | Христина Ландвитович |
