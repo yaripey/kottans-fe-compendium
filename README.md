@@ -16,3 +16,4 @@
 | [Лекция 1](./lections/lection1/lection1.md) | Александр Островной  |
 | [Лекция 2](./lections/lection2/lection2.md) | Александр Островной  |
 | [Лекция 3](./lections/lection3/lection3.md) | Христина Ландвитович |
+| [Лекция 4](./lections/lection4/lection4.md) | Христина Ландвитович |
