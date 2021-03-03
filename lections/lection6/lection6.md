@@ -215,3 +215,152 @@ kottanObject.greet()
 // Hello! I'm from Kyiv. I write in JS.
 ```
 Такой метод вызова (через точку) называется **Implicit binding**.
+
+### Передача метода как коллбек
+Так как контекст функции определяется в момент её вызова, иногда мы можем потерять этот контекст, когда куда-то передаём функцию. Например:
+
+```js
+setTimeout(kottanObject.greet, 0)
+```
+
+В данном примере мы не вызываем функцию сразу, по этому implicit binding не работает. В данном случае мы просто указываем что в коллбек нужно передать метод `greet` объекта `kottanObject`. Мы передаём само тело функции, т.к. вызова нет - нет никакой привязки контекста. Вызываться она будет потом самим браузером без контекста, по этому будет выведено `Hello! I'm from undefined. I write in undefined`.
+
+### Explicit binding
+Для явного привязывания контекста у каждой функции в прототипе есть некоторые удобные методы:
+  - `call()`:
+    Позволяет вызывать функцию, но указать ей контекст. Синтаксис:
+      ```js
+        functionName.call(objectName, arg1, arg2, ...args)
+      ```
+  - `apply()`:
+    Позволяет делать то же самое, что и `call()`, но аргументы передаются массивом:
+      ```js
+        functionName.call(objectName, [arg1, arg2, ...args])
+      ```
+  - `bind()`:
+    Позволяет получить функцию с привязанным контекстом. Не производит вызов функции, а просто возвращает новую функцию с привязанным контекстом.
+      ```js
+        const newFunc = functionName.bind(objectName)
+      ```
+
+### При использовании классов
+Пример:
+```js
+const Student = function() {
+  console.log(this)
+}
+```
+Если просто написать в консоли `Student()`, то в таком случае в консоль выведется объект `Window`, т.к. `this` ни к чему не привязан. Но, если создать новый объект этого класса, то есть написать `new Student`, то в консоль будет выведен объект `Student {}`.
+Это происходит потому что когда функция вызывается как конструктор (то есть с оператором `new`), контекст в ней будет указывать на новосозданный объект.
+
+## Приоритеты применения контекста
+1. Оператор `new`
+2. Методы `call()`, `bind()`, `apply()`
+3. Вызов через точку
+4. Window, undefined
+
+## Стрелочные функции
+Стрелочные функции (`() => {}`) имеют немного другое поведение с контекстом. Они относятся к `this` как к любой другое переменной, которая не объявлена в их области видимости и идут искать её значение вверх по цепочке областей видимости.
+
+Пример 1:
+```js
+window.test = 2
+const myFunc = () => console.log(this.test)
+myFunc() // 2
+```
+
+Пример 2:
+```js
+const user = {
+  name: 'Anna',
+  superFunction: function () {
+    const myFunc = () => console.log(this.name)
+    myFunc()
+  }
+}
+user.superFunction() // 'Anna'
+```
+
+Пример 3:
+```js
+const kottan = {
+  city: 'Kyiv',
+  language: 'JS',
+  getCity: function() {
+    return this.city
+  },
+  getLanguage: () => this.language
+}
+
+kottan.getCity() // "Kyiv"
+kottan.getLanguage() // undefined
+```
+
+Пример 4:
+```js
+const logName = () => console.log(this.fullName)
+logName.call({fullName: 'Mery Peterson'}) // undefined
+```
+
+# Практика
+
+## Пример 1
+```js
+const kottan = {
+  name: 'Kottan',
+  city: 'Kyiv',
+  language: 'JS'
+}
+
+Object.keys(kottan) // ['name', 'city', 'language']
+Object.values(kottan) // ['Kottan', 'Kyiv', 'JS']
+Object.entries(kottan) // [['name', 'Kottan'], ['city', 'Kyiv'], ['language', 'JS']]
+```
+
+## Пример 2
+```js
+const propertyName = 'name';
+
+const user = {
+  [propertyName]: 'John Doe'
+};
+console.log(user) // {name: 'John Doe'}
+```
+
+## Пример 3
+```js
+const userData = { name: 'Anna', age: 20 }
+const { name, age: currentAge } = userData;
+const user = { name, currentAge }
+console.log(user) // {name: 'Anna', currentAge: '20'}
+```
+
+## Пример 4
+```js
+function sayName() {
+  return this.name
+}
+const user1 = {
+  name: 'Mary',
+}
+const user2 = {
+  name: 'John'
+}
+const sayMarysName = sayName.bind(user1)
+const sayJohnsName = sayMarysName.bind(user2)
+console.log(sayJohnsName()) // Mary
+```
+## Пример 5
+```js
+var outer = {
+  name: 'Joe',
+  inner: {
+    name: 'Jane',
+    sayName: function() {
+      console.log(this.name)
+    }
+  }
+}
+outer.inner.sayName() // Jane
+outer.inner.sayName.call(outer) // Joe
+```
