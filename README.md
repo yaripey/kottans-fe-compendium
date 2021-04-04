@@ -25,3 +25,4 @@
 | [Лекция 5](./lections/lection5/lection5.md) | Христина Ландвитович |
 | [Лекция 6](./lections/lection6/lection6.md) | Анастасия Машошина   |
 | [Лекция 7](./lections/lection7/lection7.md) | Христина Ландвитович |
+| [Лекция 8](./lections/lection8/lection8.md) | Анастасия Машошина   |
