@@ -28,3 +28,4 @@
 | [Лекция 8](./lections/lection8/lection8.md)    | Анастасия Машошина   |
 | [Лекция 9](./lections/lection9/lection9.md)    | Анастасия Машошина   |
 | [Лекция 10](./lections/lection10/lection10.md) | Анастасия Машошина   |
+| [Лекция 11](./lections/lection11/lection11.md) | Анастасия Машошина   |
